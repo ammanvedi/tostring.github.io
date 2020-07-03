@@ -399,12 +399,12 @@ html {
 
 .code-block {
   padding: 20px !important;
-  border-radius: 4px !important;
+  border-radius: 6px !important;
   box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.24), 0px 1px 3px 0px rgba(0, 0, 0, 0.12); }
   @media screen and (min-width: 768px) {
     .code-block {
       padding: 30px !important;
-      border-radius: 14px !important; } }
+      border-radius: 6px !important; } }
 
 .blog-post {
   max-width: 680px;
@@ -496,7 +496,8 @@ html {
         font-size: 2.1rem; } }
   .blog-post img {
     width: 100%;
-    border-radius: 4px; }
+    border-radius: 6px;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.24), 0px 1px 3px 0px rgba(0, 0, 0, 0.12); }
 
         </style>
     </head>
@@ -614,11 +615,11 @@ html {
 <h2 id="why-do-we-need-the-cache">Why do we Need the Cache?</h2>
 <h3 id="reducing-number-of-calls-to-endpoints">Reducing Number Of Calls to Endpoints</h3>
 <p>By leveraging the cache in combination with a fetchPolicy we can prevent repeating queries that we have already made;</p>
-<p><img src="../../../../../Desktop/md/GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/reduce_calls.png" alt="GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/reduce_calls.png"></p>
+<p><img src="https://i.imgur.com/On3RZFN.png" alt="GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/reduce_calls.png"></p>
 <p>Components A and B both use a fetchPolicy of cache-first, we initially request the data for component A but we can pull it from the cache when requesting component B.</p>
 <h3 id="keeping-client-and-server-state-in-sync">Keeping Client and Server State in Sync</h3>
 <p>When we make a request containing a mutation, our data&#39;s state will change. We need to reflect this on the client side. If we return the data that has updated our cache can handle broadcasting this update to relevant components.</p>
-<p><img src="../../../../../Desktop/md/GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/state_parity.png" alt="GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/state_parity.png"></p>
+<p><img src="https://i.imgur.com/6lkexmR.png" alt="GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/state_parity.png"></p>
 <p>We mutate X the updated X value is reflected in all components that use it, a behaviour that most web applications require. With a properly designed schema it comes for free.</p>
 <h1 id="how-does-the-cache-work">How Does The Cache Work</h1>
 <h2 id="overall-structure">Overall Structure</h2>
@@ -678,7 +679,7 @@ html {
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre><p>If we were to visualise this as a graph we would see;</p>
-<p><img src="../../../../../Desktop/md/GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/Screenshot_2020-06-17_at_16.59.38.png" alt="GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/Screenshot_2020-06-17_at_16.59.38.png"></p>
+<p><img src="https://i.imgur.com/35nAvpB.png" alt="GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/Screenshot_2020-06-17_at_16.59.38.png"></p>
 <p>Lets spice things up a bit, lets now add in some parameters to the query and also lets make a query where we are returned an array;</p>
 <pre class="code-block language-graphql"><code class="language-graphql"><span class="token keyword">query</span> PokemonQuery <span class="token punctuation">{</span>
     pokemon<span class="token punctuation">(</span><span class="token attr-name">type</span><span class="token punctuation">:</span> <span class="token constant">ELECTRIC</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -716,7 +717,7 @@ html {
     <span class="token punctuation">]</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre><p>And visualised;</p>
-<p><img src="../../../../../Desktop/md/GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/Screenshot_2020-06-17_at_17.02.39.png" alt="GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/Screenshot_2020-06-17_at_17.02.39.png"></p>
+<p><img src="https://i.imgur.com/JbJ6ATF.png" alt="GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/Screenshot_2020-06-17_at_17.02.39.png"></p>
 <p>We should notice the following things about the way these have been stored;</p>
 <ol>
 <li>Objects are explicitly related to the query that requested them via their position in the cache</li>
@@ -734,7 +735,7 @@ html {
 </ol>
 <p>But we have a problem with that. As we found before the data was stored with the query that selected it  so somehow when we receive our response we need to be able to locate our current pikachu data in the cache and update it.</p>
 <p>But at the moment we do not have enough information to do that, the mutation is completely independent of that query. If we were to make that mutation our cache would end up looking like this;</p>
-<p><img src="../../../../../Desktop/md/GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/Screenshot_2020-06-17_at_17.05.20.png" alt="GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/Screenshot_2020-06-17_at_17.05.20.png"></p>
+<p><img src="https://i.imgur.com/NbudGja.png" alt="GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/Screenshot_2020-06-17_at_17.05.20.png"></p>
 <p>Because we dont have enough information in the response data to tell Apollo how to find the already existing data and update it.</p>
 <p>We need to de couple the data from the query by giving it a cache key that we are able to re calculate later.</p>
 <p>To do this lets see what happens when we include the Pokemon&#39;s id in our query</p>
@@ -764,7 +765,7 @@ html {
       <span class="token punctuation">}</span>
     <span class="token punctuation">]</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre><p><img src="../../../../../Desktop/md/GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/Screenshot_2020-06-17_at_17.07.11.png" alt="GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/Screenshot_2020-06-17_at_17.07.11.png"></p>
+<span class="token punctuation">}</span></code></pre><p><img src="https://i.imgur.com/5uCWAnL.png" alt="GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/Screenshot_2020-06-17_at_17.07.11.png"></p>
 <p>Now that we have an ID our object is no longer keyed by the query path, and if we update our mutation to include the id also</p>
 <pre class="code-block language-graphql"><code class="language-graphql"><span class="token keyword">mutation</span> UpdatePokemon <span class="token punctuation">{</span>
     updatePokemon<span class="token punctuation">(</span><span class="token attr-name">id</span><span class="token punctuation">:</span> <span class="token string">"3"</span><span class="token punctuation">,</span> <span class="token attr-name">set</span><span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token attr-name">hp</span><span class="token punctuation">:</span> <span class="token number">213123</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -797,7 +798,7 @@ html {
       <span class="token property">"__ref"</span><span class="token operator">:</span> <span class="token string">"Pokemon:3"</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre><p><img src="../../../../../Desktop/md/GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/Screenshot_2020-06-17_at_17.08.02.png" alt="GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/Screenshot_2020-06-17_at_17.08.02.png"></p>
+<span class="token punctuation">}</span></code></pre><p><img src="https://i.imgur.com/quaWQJw.png" alt="GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/Screenshot_2020-06-17_at_17.08.02.png"></p>
 <p>But we must make sure that the type that the mutation returns is the same as the type that we have already requested. In this case both must be of type &#39;Pokemon&#39; so the same cache key <code>Pokemon:3</code> can be generated from the query and also separately from the mutation response data. If your team is not in charge of the schema this is why it is important to discuss any changes/proposals.</p>
 <p>Automatic cache updates are very useful when updating items that have been returned from other queries, however there are some situations where this will not happen automatically</p>
 <h2 id="non-standard-and-missing-ids">Non Standard and Missing IDS</h2>
@@ -858,7 +859,7 @@ html {
       <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre><p><img src="../../../../../Desktop/md/GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/Screenshot_2020-06-17_at_17.16.31.png" alt="GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/Screenshot_2020-06-17_at_17.16.31.png"></p>
+<span class="token punctuation">}</span></code></pre><p><img src="https://i.imgur.com/q98XH20.png" alt="GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/Screenshot_2020-06-17_at_17.16.31.png"></p>
 <p>Our Pokedex data is stored under the Pokedex query. Now if we wanted to update this we would fall into a similar situation that we had previously when we had no ID. In this situation we can assume that the Pokedex query is going to serve us back the pokedex for whichever user made the request so even though the Pokedex has no intrinsic id its typename is enough to identify it.</p>
 <p>Using dataIdFromObject we can write</p>
 <pre class="code-block language-jsx"><code class="language-jsx"><span class="token keyword">const</span> dataIdFromObject<span class="token operator">:</span> <span class="token function-variable function">KeyFieldsFunction</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">object<span class="token punctuation">,</span> ctx</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
@@ -873,7 +874,7 @@ html {
   cache<span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">InMemoryCache</span><span class="token punctuation">(</span><span class="token punctuation">{</span> dataIdFromObject <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     <span class="token operator">...</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><p>This will key the Pokedex object under Pokedex and fall back to the default dataIdFromObject implementation otherwise.</p>
-<p><img src="../../../../../Desktop/md/GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/Screenshot_2020-06-17_at_17.23.10.png" alt="GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/Screenshot_2020-06-17_at_17.23.10.png"></p>
+<p><img src="https://i.imgur.com/htDkycI.png" alt="GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/Screenshot_2020-06-17_at_17.23.10.png"></p>
 <p>As previously we have now de coupled the Pokedex data from the query that made it. You can also use dataIdFromObject if you have non standard id names as by default Apollo Client will only look for an <code>id</code> or <code>_id</code> property name.</p>
 <h2 id="manual-cache-updates">Manual Cache Updates</h2>
 <p>Often when updates happen to things that are not concrete types (i.e. objects with a <code>__typename</code>) or a new instance of a concrete type is created we have to intervene manually for our query to update</p>

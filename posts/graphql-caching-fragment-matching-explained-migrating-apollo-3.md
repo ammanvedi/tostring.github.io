@@ -125,7 +125,7 @@ type Mutation {
 
 By leveraging the cache in combination with a fetchPolicy we can prevent repeating queries that we have already made;
 
-![GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/reduce_calls.png](../../../../../Desktop/md/GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/reduce_calls.png)
+![GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/reduce_calls.png](https://i.imgur.com/On3RZFN.png)
 
 Components A and B both use a fetchPolicy of cache-first, we initially request the data for component A but we can pull it from the cache when requesting component B.
 
@@ -133,7 +133,7 @@ Components A and B both use a fetchPolicy of cache-first, we initially request t
 
 When we make a request containing a mutation, our data's state will change. We need to reflect this on the client side. If we return the data that has updated our cache can handle broadcasting this update to relevant components.
 
-![GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/state_parity.png](../../../../../Desktop/md/GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/state_parity.png)
+![GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/state_parity.png](https://i.imgur.com/6lkexmR.png)
 
 We mutate X the updated X value is reflected in all components that use it, a behaviour that most web applications require. With a properly designed schema it comes for free.
 
@@ -222,7 +222,7 @@ It will be stored in the cache as
 
 If we were to visualise this as a graph we would see;
 
-![GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/Screenshot_2020-06-17_at_16.59.38.png](../../../../../Desktop/md/GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/Screenshot_2020-06-17_at_16.59.38.png)
+![GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/Screenshot_2020-06-17_at_16.59.38.png](https://i.imgur.com/35nAvpB.png)
 
 Lets spice things up a bit, lets now add in some parameters to the query and also lets make a query where we are returned an array;
 
@@ -277,7 +277,7 @@ This will be stored in the cache as
 
 And visualised;
 
-![GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/Screenshot_2020-06-17_at_17.02.39.png](../../../../../Desktop/md/GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/Screenshot_2020-06-17_at_17.02.39.png)
+![GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/Screenshot_2020-06-17_at_17.02.39.png](https://i.imgur.com/JbJ6ATF.png)
 
 We should notice the following things about the way these have been stored;
 
@@ -303,7 +303,7 @@ But we have a problem with that. As we found before the data was stored with the
 
 But at the moment we do not have enough information to do that, the mutation is completely independent of that query. If we were to make that mutation our cache would end up looking like this;
 
-![GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/Screenshot_2020-06-17_at_17.05.20.png](../../../../../Desktop/md/GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/Screenshot_2020-06-17_at_17.05.20.png)
+![GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/Screenshot_2020-06-17_at_17.05.20.png](https://i.imgur.com/NbudGja.png)
 
 Because we dont have enough information in the response data to tell Apollo how to find the already existing data and update it.
 
@@ -346,7 +346,7 @@ As if by magic our data is now stored in the cache as
 }
 ```
 
-![GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/Screenshot_2020-06-17_at_17.07.11.png](../../../../../Desktop/md/GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/Screenshot_2020-06-17_at_17.07.11.png)
+![GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/Screenshot_2020-06-17_at_17.07.11.png](https://i.imgur.com/5uCWAnL.png)
 
 Now that we have an ID our object is no longer keyed by the query path, and if we update our mutation to include the id also
 
@@ -391,7 +391,7 @@ Both our query and mutation will have a reference link to our `Pokemon:3` data
 }
 ```
 
-![GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/Screenshot_2020-06-17_at_17.08.02.png](../../../../../Desktop/md/GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/Screenshot_2020-06-17_at_17.08.02.png)
+![GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/Screenshot_2020-06-17_at_17.08.02.png](https://i.imgur.com/quaWQJw.png)
 
 But we must make sure that the type that the mutation returns is the same as the type that we have already requested. In this case both must be of type 'Pokemon' so the same cache key `Pokemon:3` can be generated from the query and also separately from the mutation response data. If your team is not in charge of the schema this is why it is important to discuss any changes/proposals.
 
@@ -472,7 +472,7 @@ and the resulting cache representation
 }
 ```
 
-![GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/Screenshot_2020-06-17_at_17.16.31.png](../../../../../Desktop/md/GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/Screenshot_2020-06-17_at_17.16.31.png)
+![GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/Screenshot_2020-06-17_at_17.16.31.png](https://i.imgur.com/q98XH20.png)
 
 Our Pokedex data is stored under the Pokedex query. Now if we wanted to update this we would fall into a similar situation that we had previously when we had no ID. In this situation we can assume that the Pokedex query is going to serve us back the pokedex for whichever user made the request so even though the Pokedex has no intrinsic id its typename is enough to identify it.
 
@@ -500,7 +500,7 @@ const client = new ApolloClient({
 
 This will key the Pokedex object under Pokedex and fall back to the default dataIdFromObject implementation otherwise.
 
-![GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/Screenshot_2020-06-17_at_17.23.10.png](../../../../../Desktop/md/GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/Screenshot_2020-06-17_at_17.23.10.png)
+![GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/Screenshot_2020-06-17_at_17.23.10.png](https://i.imgur.com/htDkycI.png)
 
 As previously we have now de coupled the Pokedex data from the query that made it. You can also use dataIdFromObject if you have non standard id names as by default Apollo Client will only look for an `id` or `_id` property name.
 
