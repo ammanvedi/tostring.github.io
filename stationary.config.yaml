@@ -1,0 +1,18 @@
+properties:
+  author:
+    name: Amman Vedi
+    links:
+      main: https://github.com/ammanvedi
+  stylesheets:
+    post: styles/post.scss
+    index: styles/index.scss
+    global: styles/global.scss
+  markdown:
+    source: posts
+  templates:
+    index: templates/index.html
+    post: templates/post.html
+    partials:
+      postPreview: templates/partials/post-preview.html
+  output:
+    directory: _generated/

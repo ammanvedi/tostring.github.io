@@ -1,0 +1,53 @@
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <title>blog</title>
+        <style>
+            {{{styles}}}
+        </style>
+    </head>
+    <body>
+    <svg width="0" height="0">
+        <filter id="abb">
+            <feColorMatrix  type="matrix"
+                            result="red_"
+                            values="4 0 0 0 0
+              0 0 0 0 0
+              0 0 0 0 0
+              0 0 0 1 0"/>
+            <feOffset in="red_" dx="1" dy="0" result="red"/>
+            <feColorMatrix type="matrix"
+                           in="SourceGraphic"
+                           result="blue_"
+                           values="0 0 0 0 0
+              0 3 0 0 0
+              0 0 10 0 0
+              0 0 0 1 0"/>
+            <feOffset in="blue_" dx="-2" dy="0" result="blue"/>
+            <feBlend mode="screen" in="red" in2="blue"/>
+
+        </filter>
+    </svg>
+    <div class="home">
+
+        <div class="home__content">
+            <div class="home__title">
+/**
+ * @name tostring
+ * @description<div class="home__title-break"><br/> *</div> amman's brain farts
+ *
+ * <a rel="noopener noreferrer" href="https://github.com/ammanvedi">{@link Github}</a>
+ * <a rel="noopener noreferrer" href="https://twitter.com/AmmanV">{@link Twitter}</a>
+ * <a rel="noopener noreferrer" href="https://www.linkedin.com/in/ammanvedi">{@link LinkedIn}</a>
+ */
+            </div>
+            <ul class="post-grid">
+                {{#each posts}}
+                    {{> postPreview}}
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+
+    </body>
+</html>
