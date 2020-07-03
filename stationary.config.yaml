@@ -15,4 +15,4 @@ properties:
     partials:
       postPreview: templates/partials/post-preview.html
   output:
-    directory: _generated/
+    directory: docs/
