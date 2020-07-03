@@ -12,7 +12,7 @@
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500;600;400&display=swap");
 html {
   line-height: 1.15;
   /* 1 */
@@ -415,38 +415,47 @@ html {
     .blog-post {
       padding: 0;
       margin: 50px auto 0; } }
-  .blog-post h1 {
+  .blog-post__back {
+    font-size: 1.5rem;
+    line-height: 1;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 400;
+    text-decoration: none;
+    color: #212121; }
+    .blog-post__back:hover, .blog-post__back:focus {
+      text-decoration: underline; }
+  .blog-post__post h1 {
     font-family: 'Roboto Mono', monospace;
     font-weight: 500;
     font-size: 3rem;
     letter-spacing: -.58px;
     line-height: 1.3; }
     @media screen and (min-width: 768px) {
-      .blog-post h1 {
+      .blog-post__post h1 {
         font-size: 3.6rem;
         letter-spacing: -.7px;
         line-height: 1.3; } }
     @media screen and (min-width: 768px) {
-      .blog-post h1:first-child {
+      .blog-post__post h1:first-child {
         font-size: 4rem;
         letter-spacing: -.7px;
         line-height: 1.4; } }
-  .blog-post code:not([class^='language-']) {
+  .blog-post__post code:not([class^='language-']) {
     background-color: rgba(0, 0, 0, 0.1);
     padding: 1px 3px 2px;
     border-radius: 4px; }
-  .blog-post h2 {
+  .blog-post__post h2 {
     font-family: 'Roboto Mono', monospace;
     font-weight: 500;
     font-size: 2.3rem;
     letter-spacing: -.45px;
     line-height: 1.39; }
     @media screen and (min-width: 768px) {
-      .blog-post h2 {
+      .blog-post__post h2 {
         font-size: 2.7rem;
         letter-spacing: -.53px;
         line-height: 1.18; } }
-  .blog-post h3 {
+  .blog-post__post h3 {
     font-family: 'Roboto Mono', monospace;
     font-weight: 500;
     font-size: 2.3rem;
@@ -454,24 +463,24 @@ html {
     line-height: 1.39;
     opacity: .6; }
     @media screen and (min-width: 768px) {
-      .blog-post h3 {
+      .blog-post__post h3 {
         font-size: 2.3rem;
         letter-spacing: -.45px;
         line-height: 1.4; } }
-  .blog-post blockquote {
+  .blog-post__post blockquote {
     padding: 0 32px;
     margin: 0;
     border-left: 6px solid #f9c1049e; }
-    .blog-post blockquote p {
+    .blog-post__post blockquote p {
       font-size: 2.1rem;
       font-style: italic;
       margin: 0; }
-  .blog-post p,
-  .blog-post ul,
-  .blog-post li,
-  .blog-post a,
-  .blog-post a:visited,
-  .blog-post a:-webkit-any-link {
+  .blog-post__post p,
+  .blog-post__post ul,
+  .blog-post__post li,
+  .blog-post__post a,
+  .blog-post__post a:visited,
+  .blog-post__post a:-webkit-any-link {
     opacity: .9;
     font-family: 'Georgia', serif;
     line-height: 1.6;
@@ -479,22 +488,22 @@ html {
     color: #212121;
     letter-spacing: .5px; }
     @media screen and (min-width: 768px) {
-      .blog-post p,
-      .blog-post ul,
-      .blog-post li,
-      .blog-post a,
-      .blog-post a:visited,
-      .blog-post a:-webkit-any-link {
+      .blog-post__post p,
+      .blog-post__post ul,
+      .blog-post__post li,
+      .blog-post__post a,
+      .blog-post__post a:visited,
+      .blog-post__post a:-webkit-any-link {
         line-height: 2;
         font-size: 2.1rem; } }
-  .blog-post code {
+  .blog-post__post code {
     line-height: 1.6;
     font-size: 1.8rem; }
     @media screen and (min-width: 768px) {
-      .blog-post code {
+      .blog-post__post code {
         line-height: 1.5;
         font-size: 2.1rem; } }
-  .blog-post img {
+  .blog-post__post img {
     width: 100%;
     border-radius: 6px;
     box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.24), 0px 1px 3px 0px rgba(0, 0, 0, 0.12); }
@@ -502,8 +511,13 @@ html {
         </style>
     </head>
     <body>
+
+
+
         <div class="blog-post">
-            <h1 id="thinking-about-intersections-and-unions-in-type-theory">Thinking About Intersections and Unions in Type Theory</h1>
+            <a href="/" class="blog-post__back">&#8592; return;</a>
+            <div class="blog-post__post">
+                <h1 id="thinking-about-intersections-and-unions-in-type-theory">Thinking About Intersections and Unions in Type Theory</h1>
 <h1 id="type-theory-thinking-about-unions-and-intersections">Type Theory: Thinking About Unions and Intersections</h1>
 <p>I am a Javascript developer by trade and I am aware that typing is not a new idea, but its adoption in javascript is relatively new. This means a lot of people like myself are confronting some ideas from type theory for the first time in detail.</p>
 <p>Some type systems will allow you to create combination types, called union or intersection types. These have a relationship to set theory in both name and function, so let’s take a brief look at some basics from set theory that we’ll need.</p>
@@ -555,6 +569,8 @@ html {
 <p>This may be counter intuitive as you may have noticed it is possible to pass TypeX &amp; TypeY into a value typed as TypeX | TypeY <a href="https://flow.org/try/#0C4TwDgpgBAKuEA0oF4oG8BQBIAzsATgJYB2A5gAr4D2YAXFHkWQDQYC+GGoks8AminTZiAVwC2AIwj5KNeqMnTWHLvCgBVYoSrFBcSEgA+vSHwDcnAMY68UAG4BDADYiI9Tdt2pMuAiQrUdFAA5A7BrFCRUApSMoH0AAzsQA">but this is true</a> and it is up to us as the developer to be able to identify which type has been passed in, for example with the use of <a href="https://mariusschulz.com/blog/typescript-2-0-tagged-union-types">disjoint/tagged unions</a>.</p>
 <h2 id="in-conclusion">In Conclusion</h2>
 <p>It is useful to brush up on some very basic set theory when reasoning about union and intersection types, but the <strong>application should always be on the possible values t</strong>hat may be assigned to a type** NOT on the definition/fields of the type itself.**</p>
+
+            </div>
 
         </div>
 

@@ -526,7 +526,7 @@ We in the front end leverage this a lot through code generation tools. We genera
 
 This protection, at least in the realm of JS exists at compile time only. Meaning normally we do not have type safety at the boundaries of our program. This is why we do things like form validation.
 
-![GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/demons.png](../../../../../Desktop/md/GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/demons.png)
+![GraphQL%20Caching%20Fragment%20Matching%20and%20Moving%20Towar%2060e7df111be04b53986c89c4f9f0aa4e/demons.png](https://i.imgur.com/9D8oQuY.png)
 
 Well with GraphQL its very easy to validate the data that we get back from the server since we know exactly what we requested! So its trivial to validate that when we request 
 

@@ -2,7 +2,7 @@
 @import "styles/post-grid";
 @import "styles/variables";
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500;600;400&display=swap');
 
 @mixin roboto-medium {
   font-family: 'Roboto Mono', monospace;
@@ -13,6 +13,12 @@
   font-family: 'Roboto Mono', monospace;
   font-weight: 500;
 }
+
+@mixin roboto-regular {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 400;
+}
+
 
 @mixin georgia-regular {
   font-family: 'Georgia', serif;
