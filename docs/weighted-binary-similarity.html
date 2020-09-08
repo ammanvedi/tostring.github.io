@@ -538,7 +538,7 @@ html {
 <img style="width: 80px;box-shadow: none;margin: 0 auto;display: block" src="https://i.imgur.com/3N2MdFq.png" />
 
 
-<p>Our weighting will allow us to change the contribution that a particular term makes to the whole, it takes the form of a function <code>w(x)</code> that takes in some parameters about the current term, for example it could be just the term itself, the index or anything you feel like. Based on this it returns a value to multiply the current term by, thus increasing or decreasing the corresponding value of <code>f(x)</code></p>
+<p>Our weighting will allow us to change the contribution that a particular term makes to the whole, it takes the form of a function <code>w(x)</code> that takes in some parameters about the current term, for example it could be just the term itself, the index or anything you feel like. Based on this it returns a value to augment the current term by, thus increasing or decreasing the corresponding value of <code>f(x)</code></p>
 <img style="width: 140px;box-shadow: none;margin: 0 auto;display: block" src="https://i.imgur.com/9iocSxo.png" />
 
 <h3 id="picking-a-base-function">Picking a Base Function</h3>
@@ -546,7 +546,7 @@ html {
 <blockquote>
 <p>The Hamming distance between two equal-length strings of symbols is the number of positions at which the corresponding symbols are different.</p>
 </blockquote>
-<p>and in code;</p>
+<p>and in code (purescript);</p>
 <pre class="code-block language-purescript"><code class="language-purescript"><span class="token hvariable">hammingDistance</span> <span class="token operator">::</span> <span class="token constant">Array</span> <span class="token constant">Int</span> <span class="token operator">-></span> <span class="token constant">Array</span> <span class="token constant">Int</span> <span class="token operator">-></span> <span class="token constant">Int</span>
 <span class="token hvariable">hammingDistance</span> <span class="token hvariable">xs</span> <span class="token hvariable">ys</span> <span class="token operator">=</span> 
   <span class="token hvariable">foldl</span> <span class="token punctuation">(</span><span class="token operator">\</span><span class="token hvariable">acc</span> <span class="token punctuation">(</span><span class="token constant">Tuple</span> <span class="token hvariable">a</span> <span class="token hvariable">b</span><span class="token punctuation">)</span> <span class="token operator">-></span> 
@@ -622,16 +622,16 @@ html {
                             alt=""
                             class="post__background-image"
                             src="https://i.imgur.com/XdXW24O.png"
-                            srcset="https://i.imgur.com/XdXW24O.png, https://i.imgur.com/JgUY3B6.png 2x"
+                            srcset="https://i.imgur.com/uEF6M4q.png, https://i.imgur.com/L1rrEO1.png 2x"
                     />
                     <img
                             loading="lazy"
                             alt=""
                             class="post__background-image post__background-image--aberrated"
                             src="https://i.imgur.com/XdXW24O.png"
-                            srcset="https://i.imgur.com/XdXW24O.png, https://i.imgur.com/JgUY3B6.png 2x"
+                            srcset="https://i.imgur.com/uEF6M4q.png, https://i.imgur.com/L1rrEO1.png 2x"
                     />
-                    <div style="background-color: #AA5A96;" class="post__gradient-overlay" ></div>
+                    <div style="background-color: #e58e26;" class="post__gradient-overlay" ></div>
                     <div class="post__content">
                         <p class="post__date">Sep 6, 2020</p>
                         <h2 class="post__title">
